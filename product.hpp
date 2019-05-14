@@ -1,68 +1,55 @@
 #pragma once
 #include "iostream"
-namespace itertools
-{
-template <typename T, typename Z>
-class product
-{
-    public:
-    T first;
-    Z second;
-
-    product(T a, Z b) : first(a), second(b) {}
+namespace itertools{
     
-    template <typename K, typename L>
-    class iterator
-    {
-       K stPointer;
-        L ndPointer;
+template <typename T, typename Z>
+class product{
 
-    public:
-        iterator(K firstType, L secondType) : stPointer(firstType), ndPointer(secondType) {}
-        
-         K& operator*()
-        {
-            return stPointer;
-        }
+private:
+T first; // first container
+Z second; // second container
 
-        iterator& operator++()
-        {
-            stPointer++;
-            return *this;
-        }
+public:
+// product constructor
+product(T a, Z b) : first(a), second(b) {}
 
-        iterator &operator++(int)
-        {
-            iterator temp = *this;
-            stPointer++;
-            return temp;
-        }
-        
-        bool operator==(const iterator &rhs) const
-        {
-            return true;
-        }
+// iterator class    
+template <typename K, typename L>
+class iterator{
+K stPointer;
+L ndPointer;
 
-        bool operator!=(const iterator &rhs) const
-        {
-            return false;
-        }
-        
-        
-        
+public:
+//iterator constructor
+iterator(K firstType, L secondType) : stPointer(firstType), ndPointer(secondType) {}
 
-    };
-
-public: 
-
-    auto begin()
-    {
-        return first.begin();
-    }
-
-    auto end()
-    {
-        return first.begin();
-    }
-};
+// iterator operators
+K& operator*(){
+    return stPointer;
 }
+iterator& operator++(){
+    stPointer++;
+    return *this;
+}
+iterator &operator++(int){
+    iterator temp = *this;
+    stPointer++;
+    return temp;
+}       
+bool operator==(const iterator &rhs) const{
+    return true;
+}
+bool operator!=(const iterator &rhs) const{
+    return false;
+}
+}; // end of iterator class
+
+// iteraor functions
+auto begin(){
+    return first.begin();
+}
+auto end(){
+    return first.begin();
+}
+};// end of product class
+}// end of namespace product

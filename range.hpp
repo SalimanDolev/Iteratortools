@@ -1,67 +1,62 @@
 #pragma once
 #include "iostream"
-namespace itertools
-{
+namespace itertools {
+
 template <typename T>
-class range 
-{
-    
+class range {
+// private variable for range class    
 private:
-    T start;
-    T stop;
+    T start; // first variable of the range
+    T stop;  // last variable of the range   
+
 public:
-    range(T first, T last) : start(first),stop(last) {}
+//range constructor
+range(T first, T last) : start(first),stop(last) {}
+    
+// iterator class    
+class iterator{
 
-    class iterator
-    {
-        T Pointer;
+T iter; // iterator veriable
 
-    public:
-        iterator(T index)
-        {
-            Pointer = index;
-        }
+public:
+//iterator constructor
+iterator(T index){
+        iter = index;
+}
+// iterator operators
+T& operator*(){
+        return iter;
+}
 
-        T& operator*()
-        {
-            return Pointer;
-        }
+iterator& operator++(){
+        iter++;
+        return *this;
+}
 
-        iterator& operator++()
-        {
-            Pointer++;
-            return *this;
-        }
-
-        iterator &operator++(int)
-        {
-            iterator temp = *this;
-            Pointer++;
-            return temp;
-        }
+iterator &operator++(int){
+        iterator temp = *this;
+        iter++;
+        return temp;
+}
         
-        bool operator==(const iterator &rhs) const
-        {
-            return true;
-        }
+bool operator==(const iterator &rhs) const{
+        return true;
+}
 
-        bool operator!=(const iterator &rhs) const
-        {
-            return false;
-        }
-    };
+bool operator!=(const iterator &rhs) const{
+        return false;
+}
+};//end of iterator class
 
-    iterator begin()
-    {
-        return range<T>::iterator(start);
+   // begin and end function for iterator     
+iterator begin(){
+return range<T>::iterator(start);
 
-    }
+}    
+iterator end(){
+return range<T>::iterator(stop);
 
-    iterator end()
-    {
-        return range<T>::iterator(stop);
+}
 
-    }
-
-};
-} 
+};//end of range class
+} // end of namespce itertools

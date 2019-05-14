@@ -12,6 +12,7 @@ using namespace itertools;
 #include "badkan.hpp"
 
 int main(){
+
 badkan::TestCase testcase;
 int grade=0;
 int signal = setjmp(badkan::longjmp_buffer);
@@ -19,24 +20,26 @@ if (signal == 0) {
 
 
 
-	//////range test
+	/////////////////////range tests///////////////////////////////////////////////////////////
 	testcase.setname("range check");
-
-	int j=5;
-	for (int i: range(5,9)){
+	// checks if the range is correct
+	//int
+	int j=3;
+	for (int i: range(3,7)){
 		testcase.CHECK_EQUAL(i,j);
 		j++;
 	}
 	 j=0;
-	for (int i: range(0,9)){
+	for (int i: range(0,3)){
 		testcase.CHECK_EQUAL(i,j);
 		j++;
 	}
-	 j=-5;
-	for (int i: range(-5,9)){
+	 j=-1;
+	for (int i: range(-1,9)){
 		testcase.CHECK_EQUAL(i,j);
 		j++;
 	}
+	//double
 	double j1 = 5.1;
 	for (double i: range(5.1,9.1)){
 		testcase.CHECK_EQUAL(i,j1);
@@ -52,6 +55,7 @@ if (signal == 0) {
 		testcase.CHECK_EQUAL(i,j1);
 		j1+=1;
 		}
+	//char
 	char j2='a';
 	for (char i: range('a','e')){
 		testcase.CHECK_EQUAL(i,j2);
@@ -60,9 +64,10 @@ if (signal == 0) {
 	
 	
 	
-	// Chain tests
+	//////////////////////////////// Chain tests///////////////////////////////////////////////////
 	
 	testcase.setname("chain check");
+	//chain check for integers
 	int arr [] = {1,2,3,5,6,7}; 
 	j=0;
 	for (int i: chain(range(1,4), range(5,8))){
@@ -82,19 +87,22 @@ if (signal == 0) {
 		testcase.CHECK_EQUAL(i,arr2[j]);    // prints 123567
 		j++;
 	}
-	
-	char str [] = "abchello";
+	// chain check for string and char
+	char str [] = "abcdhello";
+	j=0;
 	for (char i: chain(range('a','e'), string("hello"))){
 		   testcase.CHECK_EQUAL(i,str[j]); // abcdhello
-		   
+			 j++;
 }
-	char str1 [] = "helloabc";
+	char str1 [] = "helloabcd";
+	j=0;
 	for (char i: chain( (string("hello")),range('a','e'))){
-		   testcase.CHECK_EQUAL(i,str1[j]); // abcdhello
+		   testcase.CHECK_EQUAL(i,str1[j]); // helloabcd
+			 j++;
 		   }
 
 
-		  /////zip check 
+	//////////////////////////////zip tests///////////////////////////////////////////// 
 	testcase.setname("zip check");
 
   j=0;
@@ -115,16 +123,16 @@ if (signal == 0) {
 		j++;
 
   }
-j=0;
-string strArr2 []={"2,n","3,a","4,o","5,r","6,e"};
-for (auto i: zip(range(2,7), string("naore")))
-{
+	j=0;
+	string strArr2 []={"2,n","3,a","4,o","5,r","6,e"};
+	for (auto i: zip(range(2,7), string("naore")))
+	{
 		testcase.CHECK_OUTPUT(i,strArr2[j]);
 		j++;
 
-}
+	}
 
-///product test
+////////////////////////////product tests///////////////////////////////////////////////////////
 testcase.setname(" check product");
 
 	  j=0;
@@ -154,7 +162,7 @@ testcase.setname(" check product");
 
     }
 
-		////check powerset
+		//////////////////////////////////////////powerset tests///////////////////////////////////////////////
 
 		testcase.setname("powerset check");
     j=0;
@@ -183,15 +191,6 @@ testcase.setname(" check product");
 		j++;
 
    }
-
-
-
-
-
-
-
-
-
 
 testcase.print(cout, /*show_grade=*/false);
     grade = testcase.grade();

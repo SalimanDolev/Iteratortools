@@ -1,63 +1,60 @@
 #pragma once
 #include "iostream"
-namespace itertools
-{
+namespace itertools{
+
+// powerset class
 template <typename T>
-class powerset
-{
-    private:
-    T group;
-    public:
-    powerset(T a) : group(a){}
+class powerset{
 
-    
-    template <typename Z>
-    class iterator
-    {
-        Z start;
+private:
+T group;
 
-    public:
-        iterator(Z a) : start(a){}
-        
-        
-        Z& operator*()
-        {
-            return start;
-        }
+public:
+// constructor
+powerset(T a) : group(a){}
 
-        iterator& operator++()
-        {
-            start++;
-            return *this;
-        }
+// iterator class
+template <typename Z>
+class iterator{
+    Z start;
 
-        iterator &operator++(int)
-        {
-            iterator temp = *this;
-            start++;
-            return temp;
-        }
-        
-        bool operator==(const iterator &rhs) const
-        {
-            return true;
-        }
+public:
+// iterator constructor
+iterator(Z a) : start(a){}
 
-        bool operator!=(const iterator &rhs) const
-        {
-            return false;
-        }
-
-    };
-    
-    auto begin()
-    {
-        return group.begin();
-    }
-
-    auto end()
-    {
-        return group.end();
-    }
-};
+// iterator operators
+Z& operator*(){
+    return start;
 }
+
+iterator& operator++(){
+    start++;
+    return *this;
+}
+
+iterator &operator++(int){
+    iterator temp = *this;
+    start++;
+    return temp;
+}
+        
+bool operator==(const iterator &rhs) const{
+        return true;
+}
+
+bool operator!=(const iterator &rhs) const{
+        return false;
+}
+
+}; // end of iterator class
+
+// iterator functions
+auto begin(){
+    return group.begin();
+}
+auto end(){
+    return group.end();
+}
+
+}; // end of powerset class
+} // end of namespace itertools
