@@ -1,104 +1,63 @@
 #pragma once
-#include <set>
-#include <cmath>
-#include <iostream>
-#include <sstream>
-
-namespace itertools {
-
-    template <class Template>
-    class powerset {
-
+#include "iostream"
+namespace itertools
+{
+template <typename T>
+class powerset
+{
     private:
-        Template it;
+    T group;
+    public:
+    powerset(T a) : group(a){}
+
+    
+    template <typename Z>
+    class iterator
+    {
+        Z start;
 
     public:
-    powerset(Template start) : it(start) {}
-
-    auto begin() {
-    return iterator<decltype(it.begin())> (it.begin(), it.end());
-    }
-    auto end()  {
-    return iterator<decltype(it.begin())>(it.end(), it.end());
-    }
-
-    template <class C>
-        class iterator {
-
-        private:
-            C it_s;
-            C it_b;
-            unsigned   i;
-            unsigned   count;
-
-
-        public:
-            iterator(C itA , C itB): it_s(itA), it_b(itB) , i(0),count(0)  {
-
-            C iterator = it_s;
-            while (iterator != it_b)
-            {
-                ++count;
-                ++iterator;
-            }
-
-            count = std::pow(2, count);
-            }
-
-           iterator<C>& operator++() {
-               ++i;
-               return *this;
-            }
-
-            set<decltype(*it_s)> operator*() const         {
-            C iterator = it_s;
-            std::set<decltype(*it_s)> S;
-            unsigned int index = i;
-            while (index != 0 && iterator != it_b)
-            {
-                unsigned int r = index % 2;
-                index = index >> 1;
-
-                if (r == 1)
-                    S.insert(*iterator);
-
-                ++iterator;
-            }
-
-            return S;
+        iterator(Z a) : start(a){}
+        
+        
+        Z& operator*()
+        {
+            return start;
         }
 
-        bool operator!=(iterator<C> const &it) const {
-            return ((count - i) != (it.count - it.i - 1));
+        iterator& operator++()
+        {
+            start++;
+            return *this;
+        }
 
-            }
+        iterator &operator++(int)
+        {
+            iterator temp = *this;
+            start++;
+            return temp;
+        }
+        
+        bool operator==(const iterator &rhs) const
+        {
+            return true;
+        }
 
-
-        };
-
+        bool operator!=(const iterator &rhs) const
+        {
+            return false;
+        }
 
     };
-
-template <typename D>
-std::ostream &operator<<(std::ostream &os, const std::set<D> &S)
-{
-    os << "{";
-
-    auto it = S.begin();
-    if(it != S.end())
+    
+    auto begin()
     {
-        os << *it;
-        ++it;
+        return group.begin();
     }
 
-    while (it != S.end())
+    auto end()
     {
-        os << ',' << *it;
-        ++it;
+        return group.end();
     }
-
-    os << "}";
-
-    return os;
-}
+};
 }
