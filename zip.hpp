@@ -1,5 +1,8 @@
-#include "iostream"
-
+#pragma once
+#include <iostream>
+#include <iterator>
+#include <string>
+#include <sstream>
 
 namespace itertools {
 template <typename T1, typename T2>

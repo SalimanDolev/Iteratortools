@@ -5,6 +5,8 @@
 #include <string.h>
 #include <iostream>
 #include <iterator>
+#include <sstream>
+
 using namespace std;
 
 
@@ -23,9 +25,9 @@ range(T a , T b){
 
 class iterator {
 private:
- T* it;
+ T it;
 public:
-iterator(T* it = nullptr) : it(it){
+iterator(T it = nullptr) : it(it){
 }
 
 iterator& operator++() {
@@ -56,12 +58,12 @@ bool operator==(iterator itr) const {
 
 iterator begin()
 {
-        return iterator{&min};
+        return iterator{min};
 }
 
 iterator end()
 {
-        return iterator{&max};
+        return iterator{max};
 }
 };
 }

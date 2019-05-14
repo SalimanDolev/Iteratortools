@@ -1,7 +1,8 @@
-#include "iostream"
+#pragma once
 #include <set>
 #include <cmath>
 #include <iostream>
+#include <sstream>
 
 namespace itertools {
 
