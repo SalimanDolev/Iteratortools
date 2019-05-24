@@ -58,5 +58,14 @@ return range<T>::iterator(stop);
 
 }
 
+const iterator begin() const{
+return range<T>::iterator(start);
+
+}    
+const iterator end() const{
+return range<T>::iterator(stop);
+
+}
+
 };//end of range class
 } // end of namespce itertools
