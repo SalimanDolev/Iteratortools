@@ -49,14 +49,14 @@ bool operator!=(const iterator &rhs) const{
 };//end of iterator class
 
    // begin and end function for iterator     
-iterator begin(){
+/*iterator begin(){
 return range<T>::iterator(start);
 
 }    
 iterator end(){
 return range<T>::iterator(stop);
 
-}
+}*/
 
 iterator begin() const{
 return range<T>::iterator(start);
