@@ -45,10 +45,10 @@ bool operator!=(const iterator &rhs) const{
 }; // end of iterator class
 
 // iteraor functions
-auto begin(){
+auto begin()const{
     return first.begin();
 }
-auto end(){
+auto end()const{
     return first.begin();
 }
 };// end of product class
