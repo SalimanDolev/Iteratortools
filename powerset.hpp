@@ -49,10 +49,10 @@ bool operator!=(const iterator &rhs) const{
 }; // end of iterator class
 
 // iterator functions
-auto begin(){
+auto begin()const{
     return group.begin();
 }
-auto end(){
+auto end()const{
     return group.end();
 }
 
