@@ -25,11 +25,11 @@ public:
 iterator(K firstType, L secondType) : stPointer(firstType),ndPointer(secondType) {}
 }; // end of iterator class
 
-auto begin(){
+auto begin()const{
         return first.begin();
 }
 
-auto end(){
+auto end()const{
         return first.end();
 }
 };//end of zip class
