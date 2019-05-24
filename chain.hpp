@@ -50,11 +50,11 @@ bool operator!=(const iterator &rhs) const{
 };// end of iterator class
 // iterator begin and end functions
 
-auto begin(){
+auto begin() const{
 return first.begin();
 }
 
-auto end(){
+auto end()const{
        return first.end();
 }
 
