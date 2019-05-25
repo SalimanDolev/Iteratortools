@@ -44,11 +44,11 @@ bool operator!=(iterator<K,L>  it){
 }; // end of iterator class
 
 auto begin()const{
-        return first.begin();
+        return iterator<decltype(first.begin()),decltype(second.begin())>(first.begin(), second.begin());
 }
 
 auto end()const{
-        return first.end();
+        return iterator<decltype(first.end()),decltype(second.end())>(first.end(), second.end();
 }
 };//end of zip class
 template <typename T,typename E>
