@@ -1,9 +1,10 @@
 #pragma once
 #include "iostream"
 namespace itertools{
-    
-template <typename T, typename Z>
-class product{
+bool Help  = false;
+
+    template <typename T, typename Z>
+    class product{
 
 private:
 T first; // first container
@@ -11,7 +12,12 @@ Z second; // second container
 
 public:
 // product constructor
-product(T a, Z b) : first(a), second(b) {}
+product(T a, Z b) : first(a), second(b) { 
+    Help = false;
+if(!(second.begin()!= second.end())){
+    Help = true;
+}
+}
 
 // iterator class    
 template <typename K, typename L>
@@ -35,7 +41,7 @@ iterator <K,L>& operator++(){
     return *this;
 }
 
- bool operator!=(iterator const it){
+ bool operator!=(iterator it){
                 if((stPointer != it.stPointer) && !(ndPointer != it.ndPointer)){
                 move=true;
                 }
@@ -43,7 +49,7 @@ iterator <K,L>& operator++(){
                 move=false;
                 ++stPointer;
                 }
-                return (stPointer != it.stPointer);
+                return (stPointer != it.stPointer && !Help);
 
             }
 }; // end of iterator class
