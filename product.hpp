@@ -24,15 +24,16 @@ template <typename K, typename L>
 class iterator{
 K stPointer;
 L ndPointer;
+L pos;
 bool move;
 
 public:
 //iterator constructor
-iterator(K firstType, L secondType) : stPointer(firstType), ndPointer(secondType) {}
+iterator(K firstType, L secondType) : stPointer(firstType), ndPointer(secondType) {pos = ndPointer; move = false;}
 
 // iterator operators
 auto operator*()const{
-    return (std::pair<decltype(*stPointer),decltype(*ndPointer)>(*stPointer,*ndPointer));
+    return std::pair<decltype(*stPointer),decltype(*ndPointer)> (*stPointer,*ndPointer);
 }
 iterator <K,L>& operator++(){
     if(!move){
@@ -47,6 +48,7 @@ iterator <K,L>& operator++(){
                 }
                 if(move){
                 move=false;
+                ndPointer = pos;
                 ++stPointer;
                 }
                 return (stPointer != it.stPointer && !Help);
