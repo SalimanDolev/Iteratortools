@@ -29,7 +29,7 @@ bool move;
 
 public:
 //iterator constructor
-iterator(K firstType, L secondType) : stPointer(firstType), ndPointer(secondType) {pos = ndPointer; move = false;}
+iterator(K firstType, L secondType) : stPointer(firstType), ndPointer(secondType),pos(ndPointer),move(false) {}
 
 // iterator operators
 auto operator*()const{
