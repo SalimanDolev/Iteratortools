@@ -24,7 +24,7 @@ iterator(T index){
         iter = index;
 }
 // iterator operators
-T& operator*(){
+T operator*() const{
         return iter;
 }
 
@@ -32,38 +32,30 @@ iterator& operator++(){
         iter++;
         return *this;
 }
-
-iterator &operator++(int){
-        iterator temp = *this;
-        iter++;
-        return temp;
-}
         
-bool operator==(const iterator &rhs) const{
-        return true;
+bool operator==(iterator const &rhs) const{
+        return iter == rhs.iter;
 }
 
-bool operator!=(const iterator &rhs) const{
-        return false;
+bool operator!=(iterator const &rhs) const{
+        return iter != rhs.iter;
 }
 };//end of iterator class
 
    // begin and end function for iterator     
 /*iterator begin(){
 return range<T>::iterator(start);
-
 }    
 iterator end(){
 return range<T>::iterator(stop);
-
 }*/
 
 iterator begin() const{
-return range<T>::iterator(start);
+return iterator(start);
 
 }    
 iterator end() const{
-return range<T>::iterator(stop);
+return iterator(stop);
 
 }
 

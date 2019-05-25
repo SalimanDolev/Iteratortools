@@ -19,12 +19,19 @@ int signal = setjmp(badkan::longjmp_buffer);
 if (signal == 0) {
 
 
-
+	cout << "here" ;
 	/////////////////////range tests///////////////////////////////////////////////////////////
 	testcase.setname("range check");
 	// checks if the range is correct
 	//int
-	int j=3;
+	cout << "here" ;
+	int j=5;
+	for (int i: range(5,8)){
+		testcase.CHECK_EQUAL(i,j);
+		j++;
+	}
+
+	j=3;
 	for (int i: range(3,7)){
 		testcase.CHECK_EQUAL(i,j);
 		j++;
@@ -99,6 +106,7 @@ if (signal == 0) {
 	for (char i: chain( (string("hello")),range('a','e'))){
 		   testcase.CHECK_EQUAL(i,str1[j]); // helloabcd
 			 j++;
+			 
 		   }
 
 
@@ -114,12 +122,12 @@ if (signal == 0) {
 
   }
 
-
   j=0;
   string strArr []={"1,h","2,e","3,l","4,l","5,o"};
-  for (auto i: zip(range(1,6), string("hello")))
-  {
+	for (auto i: zip(range(1,6), string("hello")))
+  {	
 		testcase.CHECK_OUTPUT(i,strArr[j]);
+		cout<< i << " ";
 		j++;
 
   }
