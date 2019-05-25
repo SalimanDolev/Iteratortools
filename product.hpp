@@ -18,7 +18,7 @@ template <typename K, typename L>
 class iterator{
 K stPointer;
 L ndPointer;
-bool move
+bool move;
 
 public:
 //iterator constructor
@@ -51,10 +51,10 @@ iterator <K,L>& operator++(){
 
 // iteraor functions
 auto begin()const{
-    return iterator<decltype(first.begin()),decltype(second.begin())>(first.begin(), second.begin());;
+    return iterator<decltype(first.begin()),decltype(second.begin())>(first.begin(), second.begin());
 }
 auto end()const{
-    return iterator<decltype(first.end()),decltype(second.end())>(first.end(), second.end());;
+    return iterator<decltype(first.end()),decltype(second.end())>(first.end(), second.end());
 }
 };// end of product class
 }// end of namespace product
