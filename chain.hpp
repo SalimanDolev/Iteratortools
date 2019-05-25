@@ -15,11 +15,12 @@ chain(T a, Z b) : first(a),second(b) {}
 
 // iterator class
 template <typename K, typename L>
-class iterator
-{
+class iterator {
+
   K stPointer; // first container iterator
   L ndPointer; // second container iterator
   bool whoFirst;
+
 public:
 // iterator constructor
 iterator(K firstType, L secondType) : stPointer(firstType),ndPointer(secondType) {}
@@ -57,11 +58,11 @@ bool operator!=(const iterator <K,L> rhs){
 // iterator begin and end functions
 
 auto begin() const{
-return first.begin();
+return iterator<decltype(first.begin()),decltype(second.begin())>(first.begin(), second.begin());;
 }
 
 auto end()const{
-       return first.end();
+return iterator<decltype(first.end()),decltype(second.end())>(first.end(), second.end());;
 }
 
 };// rnd of chain class
