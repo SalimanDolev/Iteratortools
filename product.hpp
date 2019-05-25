@@ -35,6 +35,13 @@ iterator <K,L>& operator++(){
     return *this;
 }
 
+iterator<K,L>& operator++() {
+            if(move)
+               ++it2;
+               return *this;
+
+            }
+            
  bool operator!=(iterator const  it){
                 if((stPointer != it.stPointer) && !(ndPointer != it.ndPointer)){
                   move=true;
