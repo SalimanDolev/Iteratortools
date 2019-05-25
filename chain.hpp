@@ -19,7 +19,7 @@ class iterator {
 
   K stPointer; // first container iterator
   L ndPointer; // second container iterator
-  bool whoFirst;
+  bool whoFirst = true;
 
 public:
 // iterator constructor
@@ -35,6 +35,7 @@ decltype(*stPointer) operator*() const {
         else
                 return *ndPointer;
 }
+
 iterator<K,L>& operator++() {
         if(whoFirst==true)
                 ++stPointer;
@@ -43,7 +44,7 @@ iterator<K,L>& operator++() {
         return *this;
 }
 
-bool operator!=(iterator <K,L> rhs){
+bool operator!=(iterator <K,L> &rhs){
         if(whoFirst && !(stPointer != rhs.stPointer)) {
                 whoFirst = false;
         }
