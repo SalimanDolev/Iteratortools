@@ -19,32 +19,38 @@ class iterator
 {
   K stPointer; // first container iterator
   L ndPointer; // second container iterator
-
+  bool whoFirst;
 public:
 // iterator constructor
 iterator(K firstType, L secondType) : stPointer(firstType),ndPointer(secondType) {}
-        
-K& operator*(){
-        return stPointer;
-}
+
+
 // iterator operators
-iterator& operator++(){
-        stPointer++;
+
+decltype(*stPointer) operator*() const {
+
+        if(whoFirst)
+                return *stPointer;
+        else
+                return *ndPointer;
+}
+iterator<K,L>& operator++() {
+        if(whoFirst==true)
+                ++it1;
+        else
+                ++it2;
         return *this;
 }
 
-iterator &operator++(int){
-        iterator temp = *this;
-        stPointer++;
-        return temp;
-}
-        
-bool operator==(const iterator &rhs) const{
-        return true;
-}
-
-bool operator!=(const iterator &rhs) const{
-        return false;
+bool operator!=(const iterator <K,L> rhs){
+        if(whoFirst && !(stPointer != rhs.stPointer)) {
+                whoFirst = false;
+        }
+        if(whoFirst) {
+                return stPointer != rhs.stPointer;
+        }else{
+                return ndPointer != rhs.ndPointer;
+        }
 }
         
 };// end of iterator class
