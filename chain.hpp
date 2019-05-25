@@ -43,7 +43,7 @@ iterator<K,L>& operator++() {
         return *this;
 }
 
-bool operator!=(const iterator <K,L> rhs){
+bool operator!=(iterator <K,L> rhs){
         if(whoFirst && !(stPointer != rhs.stPointer)) {
                 whoFirst = false;
         }
