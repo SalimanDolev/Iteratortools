@@ -48,7 +48,7 @@ auto begin()const{
 }
 
 auto end()const{
-        return iterator<decltype(first.end()),decltype(second.end())>(first.end(), second.end();
+        return iterator<decltype(first.end()),decltype(second.end())>(first.end(), second.end());
 }
 };//end of zip class
 template <typename T,typename E>
