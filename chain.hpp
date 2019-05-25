@@ -36,9 +36,9 @@ decltype(*stPointer) operator*() const {
 }
 iterator<K,L>& operator++() {
         if(whoFirst==true)
-                ++it1;
+                ++stPointer;
         else
-                ++it2;
+                ++ndPointer;
         return *this;
 }
 
