@@ -18,38 +18,43 @@ template <typename K, typename L>
 class iterator{
 K stPointer;
 L ndPointer;
+bool move
 
 public:
 //iterator constructor
 iterator(K firstType, L secondType) : stPointer(firstType), ndPointer(secondType) {}
 
 // iterator operators
-K& operator*(){
-    return stPointer;
+auto operator*(){
+    return std::pair<decltype(*stPointer),decltype(*ndPointer> (*stPointer,*ndPointer);
 }
-iterator& operator++(){
-    stPointer++;
+iterator <K,L>& operator++(){
+    if(!move){
+        ++ndPointer;
+    }
     return *this;
 }
-iterator &operator++(int){
-    iterator temp = *this;
-    stPointer++;
-    return temp;
-}       
-bool operator==(const iterator &rhs) const{
-    return true;
-}
-bool operator!=(const iterator &rhs) const{
-    return false;
-}
+
+ bool operator!=(iterator const  it){
+                if((stPointer != it.stPointer) && !(ndPointer != it.ndPointer)){
+                  move=true;
+                }
+                if(move){
+
+                move=false;
+                    ++it1;
+                }
+                return (stPointer != it.stPointer);
+
+            }
 }; // end of iterator class
 
 // iteraor functions
 auto begin()const{
-    return first.begin();
+    return iterator<decltype(first.begin()),decltype(second.begin())>(first.begin(), second.begin());;
 }
 auto end()const{
-    return first.begin();
+    return iterator<decltype(first.end()),decltype(second.end())>(first.end(), second.end());;
 }
 };// end of product class
 }// end of namespace product
