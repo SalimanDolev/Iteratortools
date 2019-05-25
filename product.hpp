@@ -25,7 +25,7 @@ public:
 iterator(K firstType, L secondType) : stPointer(firstType), ndPointer(secondType) {}
 
 // iterator operators
-auto operator*(){
+auto operator*()const{
     return std::pair<decltype(*stPointer),decltype(*ndPointer> (*stPointer,*ndPointer);
 }
 iterator <K,L>& operator++(){
@@ -34,13 +34,6 @@ iterator <K,L>& operator++(){
     }
     return *this;
 }
-
-iterator<K,L>& operator++() {
-            if(move)
-               ++ndPointer;
-               return *this;
-
-            }
 
  bool operator!=(iterator const  it){
                 if((stPointer != it.stPointer) && !(ndPointer != it.ndPointer)){
